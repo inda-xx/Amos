@@ -1,137 +1,79 @@
-# Let's Play Java Game! 🕹️ 
+# Battle of Byte-sized Beasts! 🕹️👾
 
-This is your challenge for today, programmer! It's time to step into the magical world of **Java Programming** and test your skills. Are you ready?
+Get ready to code up your very own simple terminal-based game application. You'll become acquainted with designing Java classes, setting up functionalities, and pit creatures against each other in a mythical miniaturized virtual battlefield!
 
-### 📅 Deadline
-Get this task completed before the due date, which is on **Tuesday 20th September**.
+### ⏱️ Deadline
+Get your gaming gears set by **Friday, 2nd December**.
 
-### 👨‍💼 Instructions
-Please review the [course instructions section](https://gits-15.sys.kth.se/inda-22/course-instructions#assignments) to understand how to do and submit assignments. Make sure you adhere to every detail.
+### 👩‍🏫 Instructions
 
-### 🎓 Preparation
-Before getting started with this assignment, here's what you need to do:
+Here's what you need to check for the assignment details and submission guidelines: [assignments section of the course instructions](https://gits-15.sys.kth.se/inda-22/course-instructions#assignments).
 
-- Read [Using Objects](https://kth.oli.cmu.edu/jcourse/webui/syllabus/module.do?context=a2b40d76a4200020a49c27f0000168af)
-- Sign up and get registered for the course key `dd1337-ht22` at https://kth.oli.cmu.edu/, in case you haven't done it yet. 
+### 📚 Preparation
 
-### 📌 Learning Goals
-The learning goals for this week's tasks are:
-* Designing Java classes
-* Adding instance fields
-* Adding a constructor method
-* Creating getters and setters
-* Printing to the terminal
-* Utilising the `main` method
-* Scope (or variable shadowing)
+Gear up for the task with module 3 insights:
 
-### 🔧 Troubleshooting Guide
-If you find yourself stuck or facing any difficulties:
+- Study [Building Classes](https://kth.oli.cmu.edu/jcourse/webui/syllabus/module.do?context=f5e5a808ac1f088812f2a8ce315bac60)
+- If not yet registered, head to https://kth.oli.cmu.edu/, signup and use the course key `dd1337-ht22`
 
-1. Check out this week's [posted issues](https://gits-15.sys.kth.se/inda-22/help/issues). The solution to your problem might be there already.
-2. If not, feel free to post your issue [here](https://gits-15.sys.kth.se/inda-22/help/issues/new). Make sure title begins with "Task *x*: *summary of your problem*".
-3. You can always ask a teacher assistant in person during the [weekly lab](https://queue.csc.kth.se/Queue/INDA). Check your schedule for the timings of the next lab.
+> **Assistant's Note:** Keep in mind that this year's OLI content and tasks might have a slightly different alignment.
 
-Feel free to discuss with your fellow students, but remember to **respect the rules against plagiarism**!
+### 💡 Learning Goals
 
-### 👾 Assignment
+This assignment will help you master:
+- Designing Java classes
+- Instituting instance fields
+- Developing a constructor method
+- Creating *getters* and *setters*
+- Terminal-based printing
+- Applying the `main` method
+- Understanding Scope, or *variable shadowing*
 
-The name of the game is **Java Gold Digger!**. You are composing the code of a fearless explorer digging for gold while dodging hidden traps. 
+### <svg>❗</svg> Troubleshooting Guide
 
-#### Exercise 1.0 -- Character Class
+Stuck? Don't worry! Follow this process:
 
-In the [`src`](src) folder, create a class named `Character.java`. This class will model the game character and should include these attributes:
+1. Visit this week's [posted issues](https://gits-15.sys.kth.se/inda-22/help/issues) to find if anyone else is struggling with the same issue.
+2. If not, it's time to ask a question yourself by creating a [New Issue](https://gits-15.sys.kth.se/inda-22/help/issues/new). Give it a descriptive title, commencing with "Task *x*: *summary of your problem*"
+3. Get the help of a TA during the [weekly lab](https://queue.csc.kth.se/Queue/INDA). Check your schedule for the next lab timing.
+
+Friendly reminder: feel free to discuss with your course pals but **keep your answers to yourself**!
+
+### 🎯 Assignment
+
+Build an engaging game featuring miniature mythical characters, the *ByteBeasts*. You're going to model these tiny terrors in Java!
+
+#### Exercise 1 -- Draft a ByteBeast
+
+In the [`src`](src) folder, start by creating a class called `ByteBeast.java`. Your ByteBeast-class should contain the following attributes:
 
 - `String` name
-- `int` xPos (representing the character's x-position in the game)
-- `int` yPos (y-position)
-- `int` gold (amount of gold collected)
-- `boolean` isAlive (if character is still alive)
+- `int` level
+- `int` health
+- `int` attack
+- `int` defense
+- `boolean` isAlive
 
-A simple `main` method for `Character.java` should compile correctly if done right. This method is given below for your reference.
+#### Exercise 2 -- Breathing Life into Your Creature
 
-<details>
-  <summary>🛠️ Example 1</summary>
-  
-  ```java
-  class Character {
-    // Put your fields here!
+Done with the fields? Now it's time to bestow some behaviors. Set the access modifiers of the fields in the ByteBeast class to `private` and add *getters* and *setters* for each field which are a total of ten methods! For your `boolean` type, remember to name them as `isAlive()` and `setAlive()`.
 
-    public static void main(String[] args) {
-      // create a new "Character" object
-      Character digger = new Character();
-      
-      // assign field variables to some values
-      digger.name = "digger";
-      digger.xPos = 0;
-      digger.yPos = 0;
-      digger.gold = 0;
-      digger.isAlive = true;
-      
-      // print the information of the assigned values
-      System.out.println("Character name: " + digger.name);
-      System.out.println("Character Position: (" + digger.xPos + ", " + digger.yPos + ")");
-      System.out.println("Gold collected: " + digger.gold);
-      System.out.println("Character alive? " + digger.isAlive);
-    } 
-  } 
-  ```
-</details>
+#### Exercise 3 -- Create a ByteBeast
 
-#### Exercise 1.1 -- Getters and Setters 
+Construct a method to generate a new ByteBeast object with the help of a constructor.
 
-Implement getters and setters for each field in your `Character` class. Your `Character` class should now have private fields and all the 10 *getters* and *setters* methods. 
+#### Exercise 4 -- ByteBeast Info Checker
 
-A copied version of Example 1 into your `Character.java` file should compile correctly, if you've done this right.
+Next, foster a method named `printStats()` that can be used to print all details about the ByteBeast to the terminal.
 
-<details>
-  <summary>🛠️ Example 2</summary>
-  
-  ```java
-  class Character {
-    // Put your fields here!
-  
-    // Put your getters and setters here!
-  
-    public static void main(String[] args) {
-      // create a new "Character" object
-      Character digger = new Character();
-      
-      // assign field variables using setters
-      digger.setName("digger");
-      digger.setxPos(0);
-      digger.setyPos(0);
-      digger.setGold(0);
-      digger.setAlive(true);
-      
-      // print the information of the assigned values using getters
-      System.out.println("Character name: " + digger.getName());
-      System.out.println("Character Position: (" + digger.getxPos() + ", " + digger.getyPos() + ")");
-      System.out.println("Gold collected: " + digger.getGold());
-      System.out.println("Character alive? " + digger.getIsAlive());
-    } 
-  } 
-  ```
-</details>
-#### Exercise 1.2
+#### Exercise 5 -- BattleByte: Fight!
 
-Implement a constructor for your Character class. Overwrite your previous main method in accordance to this change.
+Time to make some ruckus! Fabricate a method called `battle` that takes in a ByteBeast object, which will be its opponent. The offense can reduce the health of the opponent calculated based on the attacker's level, attack power, and the opponent's defense. Don't forget to check for the health and update the 'isAlive' status.
 
-#### Exercise 1.3 -- `printStatus()`
+#### Exercise 6 -- An Exploration of Variable Shadowing
 
-Add a method named `printStatus()`. This method should print all the information about the character to the console. 
+Check out the examples of *Variable shadowing* below. Ponder on how to fix these examples. Reflect on the concepts of *local scope*, *global variables*, and *instance fields* while examining these examples.
 
-#### Exercise 1.4 -- `move()`
+### 🐛 Found bugs?
 
-Incorporate a `move()` method into your Character class. This method should receive a `char` as input ('N', 'S', 'E', 'W') and modify the character's position accordingly (North, South, East, or West). Implement bounds checking so the character cannot move outside the grid (which is 10x10 units for this exercise). 
-
-#### Exercise 1.5 -- `dig()`
- 
-Introduce a `dig()` method. This method receives an `int` value as an argument, which corresponds to the amount of gold to be added to the player’s gold stash.
-
-#### Exercise 1.6 -- Instance variable shadowing
-
-Create an example of instance variable shadowing. Discuss this subject during the next lab session. 
-
-### 🕷️ Bugs and Errors?
-
-If you stumble upon any bugs or errors in this exercise, create a new issue with the title "Task *x*: Error - *summary of the error here*". Your contributions will be appreciated and acknowledged.
+If you encounter any inconsistencies or errors in this exercise, consider opening a [New Issue](https://gits-15.sys.kth.se/inda-22/help/issues/new) with the title "Task *x* Error: *summary of error here*". Helpful bug reports will receive an acknowledgment!
