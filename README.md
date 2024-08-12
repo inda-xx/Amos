@@ -2,6 +2,9 @@
 
 Welcome to the Task Generation and Submission System! This guide will walk you through the steps of creating a new task, solving it, and submitting your solution for review.
 
+## 💀 Deadline
+ This work should be completed before the exercise, on **Friday 16th September**.
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -17,16 +20,6 @@ Welcome to the Task Generation and Submission System! This guide will walk you t
 ## Overview
 
 This system allows you to generate new programming tasks, solve them locally, and submit your solution through a pull request (PR). The PR will be automatically reviewed, and your code will be tested before it is merged.
-
-## Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- Git
-- Python 3.8 or later
-- A GitHub account
-
-You'll also need access to the GitHub repository where the task system is hosted.
 
 ## Step 1: Generating a New Task
 
