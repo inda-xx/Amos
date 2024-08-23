@@ -1,137 +1,170 @@
-# Let's Play Java Game! 🕹️ 
+# 🏛 University Economic Department Simulator
 
-This is your challenge for today, programmer! It's time to step into the magical world of **Java Programming** and test your skills. Are you ready?
+For this task, you will develop a simple simulation of a university's Economic Department in Java. You will model the department's financial details such as budget and cash flow. This exercise is designed to enhance your understanding of designing Java classes and practicing encapsulation, constructors, getters and setters, printing, the main method, and variable shadowing.
 
-### 📅 Deadline
-Get this task completed before the due date, which is on **Tuesday 20th September**.
+### 💀 Deadline
+This task should be completed before the lab session on **Friday, 30th October**.
 
-### 👨‍💼 Instructions
-Please review the [course instructions section](https://gits-15.sys.kth.se/inda-22/course-instructions#assignments) to understand how to do and submit assignments. Make sure you adhere to every detail.
+### 👩‍🏫 Instructions
+For instructions on how to complete and submit the task, please refer to the [assignments section of the course instructions](https://your-university-link.edu/assignments).
 
-### 🎓 Preparation
-Before getting started with this assignment, here's what you need to do:
+### 📝 Preparation
+To complete this task, ensure you have read and understood the following materials:
 
-- Read [Using Objects](https://kth.oli.cmu.edu/jcourse/webui/syllabus/module.do?context=a2b40d76a4200020a49c27f0000168af)
-- Sign up and get registered for the course key `dd1337-ht22` at https://kth.oli.cmu.edu/, in case you haven't done it yet. 
+- Java Classes and Objects: https://docs.oracle.com/javase/tutorial/java/javaOO/classes.html
+- Encapsulation in Java: https://docs.oracle.com/javase/tutorial/java/javaOO/encapsulation.html
+- Java Constructors: https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html
 
-### 📌 Learning Goals
-The learning goals for this week's tasks are:
+### ✅ Learning Goals
+This week's learning goals include:
 * Designing Java classes
 * Adding instance fields
 * Adding a constructor method
-* Creating getters and setters
+* Creating *getters* and *setters*
 * Printing to the terminal
-* Utilising the `main` method
-* Scope (or variable shadowing)
+* Using the `main` method
+* Understanding scope and *variable shadowing*
 
-### 🔧 Troubleshooting Guide
-If you find yourself stuck or facing any difficulties:
+### 🚨 Troubleshooting Guide
+If you encounter any issues, try these steps:
 
-1. Check out this week's [posted issues](https://gits-15.sys.kth.se/inda-22/help/issues). The solution to your problem might be there already.
-2. If not, feel free to post your issue [here](https://gits-15.sys.kth.se/inda-22/help/issues/new). Make sure title begins with "Task *x*: *summary of your problem*".
-3. You can always ask a teacher assistant in person during the [weekly lab](https://queue.csc.kth.se/Queue/INDA). Check your schedule for the timings of the next lab.
+1. Review the [posted issues](https://your-university-link.edu/help/issues) for potential solutions or similar problems faced by peers.
+2. Create a [new issue](https://your-university-link.edu/help/issues/new) with a descriptive title, such as "Task 3: Issue with constructor".
+3. Visit the weekly lab session for assistance from a TA.
 
-Feel free to discuss with your fellow students, but remember to **respect the rules against plagiarism**!
+Feel free to discuss approaches with classmates, but remember **do not share solutions**.
 
-### 👾 Assignment
+### 🏛 Assignment
 
-The name of the game is **Java Gold Digger!**. You are composing the code of a fearless explorer digging for gold while dodging hidden traps. 
+Imagine you are tasked with developing a financial model for your university's Economics Department. This model will store and manage the department's budget and cash flow details. Your task is to implement this model in Java using the following exercises:
 
-#### Exercise 1.0 -- Character Class
+#### Exercise 3.0 -- Fields
+In the `src` folder, create a new class called `EconomicsDepartment.java`. Define these instance fields to store financial information:
 
-In the [`src`](src) folder, create a class named `Character.java`. This class will model the game character and should include these attributes:
+- `String departmentName`
+- `double annualBudget`
+- `double cashFlow`
+- `boolean inDeficit`
 
-- `String` name
-- `int` xPos (representing the character's x-position in the game)
-- `int` yPos (y-position)
-- `int` gold (amount of gold collected)
-- `boolean` isAlive (if character is still alive)
-
-A simple `main` method for `Character.java` should compile correctly if done right. This method is given below for your reference.
+Verify your fields work correctly with the Example 1 provided, and use it to test your class.
 
 <details>
-  <summary>🛠️ Example 1</summary>
-  
+  <summary> 🛠 Example 1 </summary>
+
   ```java
-  class Character {
-    // Put your fields here!
+  public class EconomicsDepartment {
+    // Define your fields here
 
     public static void main(String[] args) {
-      // create a new "Character" object
-      Character digger = new Character();
-      
-      // assign field variables to some values
-      digger.name = "digger";
-      digger.xPos = 0;
-      digger.yPos = 0;
-      digger.gold = 0;
-      digger.isAlive = true;
-      
-      // print the information of the assigned values
-      System.out.println("Character name: " + digger.name);
-      System.out.println("Character Position: (" + digger.xPos + ", " + digger.yPos + ")");
-      System.out.println("Gold collected: " + digger.gold);
-      System.out.println("Character alive? " + digger.isAlive);
-    } 
-  } 
+      EconomicsDepartment econDept = new EconomicsDepartment();
+
+      econDept.departmentName = "University Economics Department";
+      econDept.annualBudget = 5_000_000.00;
+      econDept.cashFlow = 500_000.00;
+
+      System.out.println("Department: " + econDept.departmentName);
+      System.out.println("Annual Budget: $" + econDept.annualBudget);
+      System.out.println("Cash Flow: $" + econDept.cashFlow);
+    }
+  }
   ```
 </details>
 
-#### Exercise 1.1 -- Getters and Setters 
-
-Implement getters and setters for each field in your `Character` class. Your `Character` class should now have private fields and all the 10 *getters* and *setters* methods. 
-
-A copied version of Example 1 into your `Character.java` file should compile correctly, if you've done this right.
+#### Exercise 3.1 -- Getters and Setters
+Implement encapsulation by changing the field access modifiers to `private`. Add *getters* and *setters* for these fields. Use the provided Example 2 to test your changes.
 
 <details>
-  <summary>🛠️ Example 2</summary>
-  
+  <summary> 🛠 Example 2 </summary>
+
   ```java
-  class Character {
-    // Put your fields here!
-  
-    // Put your getters and setters here!
-  
+  public class EconomicsDepartment {
+    // Private fields and their getters and setters
+
     public static void main(String[] args) {
-      // create a new "Character" object
-      Character digger = new Character();
-      
-      // assign field variables using setters
-      digger.setName("digger");
-      digger.setxPos(0);
-      digger.setyPos(0);
-      digger.setGold(0);
-      digger.setAlive(true);
-      
-      // print the information of the assigned values using getters
-      System.out.println("Character name: " + digger.getName());
-      System.out.println("Character Position: (" + digger.getxPos() + ", " + digger.getyPos() + ")");
-      System.out.println("Gold collected: " + digger.getGold());
-      System.out.println("Character alive? " + digger.getIsAlive());
-    } 
-  } 
+      EconomicsDepartment econDept = new EconomicsDepartment();
+
+      econDept.setDepartmentName("University Economics Department");
+      econDept.setAnnualBudget(5_000_000.00);
+      econDept.setCashFlow(500_000.00);
+
+      System.out.println("Department: " + econDept.getDepartmentName());
+      System.out.println("Annual Budget: $" + econDept.getAnnualBudget());
+      System.out.println("Cash Flow: $" + econDept.getCashFlow());
+      System.out.println("In Deficit: " + econDept.isInDeficit());
+    }
+  }
   ```
 </details>
-#### Exercise 1.2
 
-Implement a constructor for your Character class. Overwrite your previous main method in accordance to this change.
+> **Note:** The convention for boolean getters typically uses `is` instead of `get` (e.g., `isInDeficit()`).
 
-#### Exercise 1.3 -- `printStatus()`
+#### Exercise 3.2 -- Constructor
+Instead of setting each field explicitly, use a constructor to initialize the department's data. Follow the constructor examples in the provided material and refactor the main method accordingly.
 
-Add a method named `printStatus()`. This method should print all the information about the character to the console. 
+#### Exercise 3.3 -- `printFinancialStatus()`
+Create a method `printFinancialStatus()` which outputs the department's current financial status. Use Example 3 to understand what the output should look like.
 
-#### Exercise 1.4 -- `move()`
+<details>
+  <summary> 🛠 Example 3 </summary>
 
-Incorporate a `move()` method into your Character class. This method should receive a `char` as input ('N', 'S', 'E', 'W') and modify the character's position accordingly (North, South, East, or West). Implement bounds checking so the character cannot move outside the grid (which is 10x10 units for this exercise). 
+  ```java
+  public static void main(String[] args) {
+    EconomicsDepartment econDept = new EconomicsDepartment("University Economics Department", 5_000_000.00, 500_000.00);
 
-#### Exercise 1.5 -- `dig()`
- 
-Introduce a `dig()` method. This method receives an `int` value as an argument, which corresponds to the amount of gold to be added to the player’s gold stash.
+    econDept.printFinancialStatus();
+  }
+  ```
 
-#### Exercise 1.6 -- Instance variable shadowing
+  Output:
+  ```
+  > FINANCIAL STATUS
+  > Department: University Economics Department
+  > Annual Budget: $5000000.0
+  > Cash Flow: $500000.0
+  > In Deficit: false
+  ```
+</details>
 
-Create an example of instance variable shadowing. Discuss this subject during the next lab session. 
+#### Exercise 3.4 -- Simulate Changes in Finances
+Implement a method `updateFinances(double changeInCashFlow)` that updates the `cashFlow` and prints if the department goes into deficit (i.e., when `cashFlow` becomes negative).
 
-### 🕷️ Bugs and Errors?
+<details>
+  <summary> 🛠 Example 4 </summary>
 
-If you stumble upon any bugs or errors in this exercise, create a new issue with the title "Task *x*: Error - *summary of the error here*". Your contributions will be appreciated and acknowledged.
+  ```java
+  public static void main(String[] args) {
+    EconomicsDepartment econDept = new EconomicsDepartment("University Economics Department", 5_000_000.00, 500_000.00);
+
+    econDept.updateFinances(-600_000.00); // This should trigger a deficit warning
+  }
+  ```
+
+  Output:
+  ```
+  > Cash flow updated. Current balance: $-100000.0
+  > Warning: The department is now in deficit!
+  ```
+</details>
+
+#### Exercise 3.5 -- Variable Shadowing
+Develop an understanding of variable shadowing with the example below. Reflect on how variable shadowing occurs and how to avoid it.
+
+```Java
+public class University {
+    private double totalBudget = 10_000_000.00; // I want this printed!
+
+    public void displayBudget() {
+        double totalBudget = 5_000_000.00;
+        System.out.println("Total Budget: " + totalBudget); // This prints the wrong budget :(
+    }
+
+    public static void main(String[] args) {
+        new University().displayBudget();
+    }
+}
+```
+
+> **Assistant's Note:** Consider how modifying the use of the `this` keyword can solve issues related to shadowing.
+
+### 🐞 Bugs and errors?
+If you find any inconsistencies or errors in this task, please open a [New Issue](https://your-university-link.edu/help/issues/new) titled "Task 3 Error: *summary of problem here*". Students who find bugs will be thanked in the acknowledgments!
