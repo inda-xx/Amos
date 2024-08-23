@@ -1,137 +1,213 @@
-# Let's Play Java Game! 🕹️ 
+# 🚀 Space Adventure
 
-This is your challenge for today, programmer! It's time to step into the magical world of **Java Programming** and test your skills. Are you ready?
+For this programming task, you are going to design a simple space exploration game using Java. Your journey will take you through player movement, scoring systems, and enemy interactions to implement comprehensive game mechanics using the core principles of Java programming.
 
-### 📅 Deadline
-Get this task completed before the due date, which is on **Tuesday 20th September**.
+### 💀 Deadline
+This assignment should be completed before the session on **Friday, October 20th**.
 
-### 👨‍💼 Instructions
-Please review the [course instructions section](https://gits-15.sys.kth.se/inda-22/course-instructions#assignments) to understand how to do and submit assignments. Make sure you adhere to every detail.
+### 👩‍🏫 Instructions
+For detailed instructions on how to complete and submit the assignment, please refer to the [assignments section of the course instructions](https://your-institution.edu/course-instructions#assignments).
 
-### 🎓 Preparation
-Before getting started with this assignment, here's what you need to do:
+### 📝 Preparation
+Before starting the task, please ensure you've reviewed the materials in Module 3, "Game Programming Essentials."
 
-- Read [Using Objects](https://kth.oli.cmu.edu/jcourse/webui/syllabus/module.do?context=a2b40d76a4200020a49c27f0000168af)
-- Sign up and get registered for the course key `dd1337-ht22` at https://kth.oli.cmu.edu/, in case you haven't done it yet. 
+- Read the section [Classes and Objects](https://docs.oracle.com/javase/tutorial/java/javaOO/index.html)
+- Register on the course platform if you haven't to access additional resources.
 
-### 📌 Learning Goals
-The learning goals for this week's tasks are:
+> **Note:** Allow yourself to explore additional reading materials if any concepts seem unfamiliar.
+
+### ✅ Learning Goals
+
+This week's learning objectives include:
 * Designing Java classes
 * Adding instance fields
-* Adding a constructor method
-* Creating getters and setters
+* Writing a constructor method
+* Creating *getters* and *setters*
 * Printing to the terminal
-* Utilising the `main` method
-* Scope (or variable shadowing)
+* Mastering the `main` method
+* Understanding the concept of Scope (Variable Shadowing)
 
-### 🔧 Troubleshooting Guide
-If you find yourself stuck or facing any difficulties:
+### 🚨 Troubleshooting Guide
+If you encounter any issues, follow these steps:
 
-1. Check out this week's [posted issues](https://gits-15.sys.kth.se/inda-22/help/issues). The solution to your problem might be there already.
-2. If not, feel free to post your issue [here](https://gits-15.sys.kth.se/inda-22/help/issues/new). Make sure title begins with "Task *x*: *summary of your problem*".
-3. You can always ask a teacher assistant in person during the [weekly lab](https://queue.csc.kth.se/Queue/INDA). Check your schedule for the timings of the next lab.
+1. Review [this week's posted issues](https://your-institution.edu/help/issues). Are students experiencing similar problems?
+2. If unresolved, create a [New Issue](https://your-institution.edu/help/issues/new) with a descriptive title, such as "Task Space Adventure: [brief problem summary]."
+3. Discuss problems with peers, but **do not share solutions**!
 
-Feel free to discuss with your fellow students, but remember to **respect the rules against plagiarism**!
+### 🎮 Assignment
 
-### 👾 Assignment
+Our adventure begins with coding a simple space exploration game. Fly through space, dodge enemies, and collect points. Below are the exercises that will guide you in building the game's functionalities.
 
-The name of the game is **Java Gold Digger!**. You are composing the code of a fearless explorer digging for gold while dodging hidden traps. 
+#### Exercise 3.0 -- Fields
 
-#### Exercise 1.0 -- Character Class
+Create a class `SpaceExplorer.java` in your `src` directory. You'll be implementing fields to model the player and game dynamics.
 
-In the [`src`](src) folder, create a class named `Character.java`. This class will model the game character and should include these attributes:
+- `String` playerName
+- `int` score
+- `double` positionX
+- `double` positionY
+- `boolean` collisionOccurred
 
-- `String` name
-- `int` xPos (representing the character's x-position in the game)
-- `int` yPos (y-position)
-- `int` gold (amount of gold collected)
-- `boolean` isAlive (if character is still alive)
-
-A simple `main` method for `Character.java` should compile correctly if done right. This method is given below for your reference.
+If implemented correctly, adding the main method from Example 1 should compile when added to `SpaceExplorer.java`.
 
 <details>
-  <summary>🛠️ Example 1</summary>
-  
+  <summary> 🛠 Example 1 </summary>
+
   ```java
-  class Character {
-    // Put your fields here!
+  class SpaceExplorer {
+
+    // Declare your fields here!
 
     public static void main(String[] args) {
-      // create a new "Character" object
-      Character digger = new Character();
-      
-      // assign field variables to some values
-      digger.name = "digger";
-      digger.xPos = 0;
-      digger.yPos = 0;
-      digger.gold = 0;
-      digger.isAlive = true;
-      
-      // print the information of the assigned values
-      System.out.println("Character name: " + digger.name);
-      System.out.println("Character Position: (" + digger.xPos + ", " + digger.yPos + ")");
-      System.out.println("Gold collected: " + digger.gold);
-      System.out.println("Character alive? " + digger.isAlive);
-    } 
-  } 
+      SpaceExplorer hero = new SpaceExplorer();
+
+      // Initialize fields
+      hero.playerName = "Captain Star";
+      hero.score = 0;
+      hero.positionX = 100.0;
+      hero.positionY = 200.0;
+
+      // Output the player's information
+      System.out.println("Player: " + hero.playerName);
+      System.out.println("Score: " + hero.score);
+      System.out.println("Position: (" + hero.positionX + ", " + hero.positionY + ")");
+    }
+  }
   ```
 </details>
 
-#### Exercise 1.1 -- Getters and Setters 
+#### Exercise 3.1 -- Getters and Setters
 
-Implement getters and setters for each field in your `Character` class. Your `Character` class should now have private fields and all the 10 *getters* and *setters* methods. 
-
-A copied version of Example 1 into your `Character.java` file should compile correctly, if you've done this right.
+Encapsulate the data by making fields private. Implement *getters* and *setters* to access them. 
 
 <details>
-  <summary>🛠️ Example 2</summary>
-  
+  <summary> 🛠 Example 2 </summary>
+
   ```java
-  class Character {
-    // Put your fields here!
-  
-    // Put your getters and setters here!
-  
+  class SpaceExplorer {
+
+    // Add private fields and getters/setters!
+
     public static void main(String[] args) {
-      // create a new "Character" object
-      Character digger = new Character();
-      
-      // assign field variables using setters
-      digger.setName("digger");
-      digger.setxPos(0);
-      digger.setyPos(0);
-      digger.setGold(0);
-      digger.setAlive(true);
-      
-      // print the information of the assigned values using getters
-      System.out.println("Character name: " + digger.getName());
-      System.out.println("Character Position: (" + digger.getxPos() + ", " + digger.getyPos() + ")");
-      System.out.println("Gold collected: " + digger.getGold());
-      System.out.println("Character alive? " + digger.getIsAlive());
-    } 
-  } 
+      SpaceExplorer hero = new SpaceExplorer();
+
+      hero.setPlayerName("Captain Star");
+      hero.setScore(0);
+      hero.setPositionX(100.0);
+      hero.setPositionY(200.0);
+
+      System.out.println("Player: " + hero.getPlayerName());
+      System.out.println("Score: " + hero.getScore());
+      System.out.println("Position: (" + hero.getPositionX() + ", " + hero.getPositionY() + ")");
+      System.out.println("Collision Status: " + hero.isCollisionOccurred());
+    }
+  }
   ```
 </details>
-#### Exercise 1.2
 
-Implement a constructor for your Character class. Overwrite your previous main method in accordance to this change.
+> **Note:** The getter for the `boolean` collisionOccurred would be `isCollisionOccurred()`.
 
-#### Exercise 1.3 -- `printStatus()`
+#### Exercise 3.2 -- Constructor
 
-Add a method named `printStatus()`. This method should print all the information about the character to the console. 
+A constructor simplifies initialization. Design a constructor for initializing the `SpaceExplorer`.
 
-#### Exercise 1.4 -- `move()`
+- Constructor should accept player name, initial position, and starting score.
 
-Incorporate a `move()` method into your Character class. This method should receive a `char` as input ('N', 'S', 'E', 'W') and modify the character's position accordingly (North, South, East, or West). Implement bounds checking so the character cannot move outside the grid (which is 10x10 units for this exercise). 
+Deploy the updated fields via constructor and conduct tests akin to Example 2.
 
-#### Exercise 1.5 -- `dig()`
- 
-Introduce a `dig()` method. This method receives an `int` value as an argument, which corresponds to the amount of gold to be added to the player’s gold stash.
+#### Exercise 3.3 -- Scoring System
 
-#### Exercise 1.6 -- Instance variable shadowing
+Implement a `scorePoints` method to update the player's score. Reflect these changes in the terminal using `printInfo()`.
 
-Create an example of instance variable shadowing. Discuss this subject during the next lab session. 
+<details>
+  <summary> 🛠 Example 3 </summary>
 
-### 🕷️ Bugs and Errors?
+  ```java
+  public static void main(String[] args){
+    SpaceExplorer hero = new SpaceExplorer("Captain Star", 100.0, 200.0, 0);
 
-If you stumble upon any bugs or errors in this exercise, create a new issue with the title "Task *x*: Error - *summary of the error here*". Your contributions will be appreciated and acknowledged.
+    // Scoring points
+    hero.scorePoints(50);
+
+    // Print updated score
+    hero.printInfo();
+  }
+  ```
+
+  Expected output:
+
+  ```
+  > Space Explorer: Captain Star.
+  > Score: 50
+  > Position: (100.0, 200.0)
+  > Collision Status: false
+  ```
+</details>
+
+#### Exercise 3.4 -- Enemy Interactions
+
+Introduce the `encounterEnemy` method to simulate an interaction with an enemy. If an enemy is 'hit', set `collisionOccurred` to true and reduce the score based on a defined formula.
+
+<details>
+  <summary> 🛠 Example 4 </summary>
+
+  ```java
+  public static void main(String[] args){
+    SpaceExplorer hero = new SpaceExplorer("Captain Star", 100.0, 200.0, 50);
+    hero.encounterEnemy(10);
+
+    hero.printInfo();
+  }
+  ```
+
+  Expected output:
+
+  ```
+  > Space Explorer: Captain Star attacked by an enemy!
+  > Score reduced by 10, new score: 40
+  > Collision Status: true
+  ```
+</details>
+
+#### Exercise 3.5 -- Variable Shadowing
+
+Explore the *Variable Shadowing* phenomenon in Java. Understand key concepts that affect variable accessibility within different scopes.
+
+```Java
+public class SpaceError {
+    private int speed = 100;
+
+    public void printSpeed() {
+        int speed = 200;
+        System.out.println(speed); // Outputs the wrong speed level!
+    }
+
+    public static void main(String[] args){
+        new SpaceError().printSpeed();
+    }
+}
+```
+
+Here is another example of shadowing:
+
+```Java
+public class Starship {
+  private String shipName;
+  private double fuelLevel;
+
+  public Starship(String shipName, double fuelLevel) {
+    shipName = shipName; // This is incorrect.
+    fuelLevel = fuelLevel;
+  }
+
+  public void fuelUpdate(){
+    double fuelLevel = 50;
+    System.out.println("Current fuel level: " + fuelLevel); // Outputs an unintended value.
+  }
+}
+```
+
+> **Note:** Pay attention to the difference between local and instance scopes and how the `this` keyword can help.
+
+### 🐞 Bugs and Errors?
+Please report any discrepancies or errors in this task by creating a [New Issue](https://your-institution.edu/help/issues/new) with the title "Task Space Adventure Error: [brief summary]." Bug discoverers will be recognized in acknowledgments.
