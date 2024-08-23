@@ -1,6 +1,6 @@
 # Task Generation and Submission System
 
-Welcome to the Task Generation and Submission System! This guide will walk you through the steps of creating a new task, solving it, and submitting your solution for review.
+Welcome txo the Task Generation and Submission System! This guide will walk you through the steps of creating a new task, solving it, and submitting your solution for review.
 
 ## 💀 Deadline
  This work should be completed before the exercise, on **Friday 16th September**.
