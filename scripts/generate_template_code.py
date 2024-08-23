@@ -10,12 +10,20 @@ def main(api_key, branch_name):
 
     client = OpenAI(api_key=api_key)
 
-    # Read the task description
+    # Read the new task description
     try:
         with open("tasks/new_task.md", "r") as file:
             task_description = file.read()
     except FileNotFoundError:
         print("Error: new_task.md file not found.")
+        sys.exit(1)
+
+    # Read the original task description
+    try:
+        with open("tasks/original_task.md", "r") as file:
+            original_task_description = file.read()
+    except FileNotFoundError:
+        print("Error: original_task.md file not found.")
         sys.exit(1)
 
     # Read the original code template
@@ -81,17 +89,30 @@ def main(api_key, branch_name):
     }
     """
 
-    # Combine task description and original template into a single prompt
-    prompt = (f"Based on the following task description, generate a detailed Java code template. "
-              "The template should include all necessary placeholders and comments to guide the students in completing the task. "
-              "Ensure that the template aligns with the exercises and instructions provided in the task description. "
-              "Use the provided original code template as inspiration for the structure and formatting of the new code template.\n\n"
-              f"### Task Description\n\n"
-              f"{task_description}\n\n"
-              "### Original Code Template\n\n"
-              f"```java\n{original_template}\n```\n\n"
-              "Format the response as follows:\n\n"
-              "### Template\n<template_code>\n\n")
+    # Required imports
+    required_imports = """
+    import org.junit.Before;
+    import org.junit.Test;
+    import static org.junit.Assert.*;
+    import java.util.Arrays;
+    import java.util.List;
+    """
+
+    # Combine task description, original task, and original template into a single prompt
+    prompt = (f"Based on the following new task description and the original task description, generate a detailed Java code template. "
+            "The template should include all necessary placeholders and comments to guide the students in completing the task. "
+            "Ensure that the template aligns with the exercises and instructions provided in both the new and original task descriptions. "
+            "Use the provided original code template as inspiration for the structure and formatting of the new code template.\n\n"
+            f"### New Task Description\n\n"
+            f"{task_description}\n\n"
+            f"### Original Task Description\n\n"
+            f"{original_task_description}\n\n"
+            "### Original Code Template\n\n"
+            f"{original_template}\n\n"
+            "IMPORTANT: The response must be plain Java code with no markdown formatting or ```java blocks. "
+            "Ensure that the response is ready to be saved directly as a .java file. "
+            "Additionally, ensure that all import statements are placed at the top of the file and that all classes and methods are properly closed with curly braces."
+    )
 
     # Call OpenAI API to generate the template code
     response_content = generate_with_retries(client, prompt, max_retries=3)
@@ -99,19 +120,55 @@ def main(api_key, branch_name):
         print("Error: Failed to generate template code after multiple retries.")
         sys.exit(1)
 
+    # Validate and correct the generated code
+    response_content = validate_and_correct_java_code(response_content)
+
+    # Prepend the required imports to the generated code
+    final_code = required_imports.strip() + "\n\n" + response_content.strip()
+
     # Write the template code to a Java file
     template_file_path = os.path.join("src", "template_code.java")
     with open(template_file_path, "w") as file:
-        file.write(response_content)
+        file.write(final_code)
 
     # Commit and push changes
     commit_and_push_changes(branch_name, template_file_path)
+
+def validate_and_correct_java_code(java_code):
+    """Validate and correct common Java code errors."""
+    lines = java_code.splitlines()
+    imports = []
+    code = []
+    inside_class = False
+
+    for line in lines:
+        # Collect imports to ensure they are at the top
+        if line.startswith("import "):
+            imports.append(line)
+        else:
+            if "class " in line:
+                inside_class = True
+            if inside_class:
+                code.append(line)
+            else:
+                # Collect any code that should be outside the class
+                imports.append(line)
+
+    # Ensure all braces are properly closed
+    open_braces = sum(line.count('{') for line in code)
+    close_braces = sum(line.count('}') for line in code)
+    if open_braces > close_braces:
+        code.append("}" * (open_braces - close_braces))
+
+    # Reassemble the code with imports at the top
+    final_code = "\n".join(imports + [""] + code)
+    return final_code
 
 def generate_with_retries(client, prompt, max_retries=3):
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
-                model="GPT-4o",
+                model="gpt-4o-2024-08-06",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
                     {"role": "user", "content": prompt}

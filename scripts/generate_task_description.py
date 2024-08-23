@@ -17,42 +17,40 @@ def main(api_key):
     theme = os.getenv("TASK_THEME", "Create a basic Java application with the following requirements.")
     language = os.getenv("TASK_LANGUAGE", "English")
 
-    # Define task goals
-    task_goals = [
-        "Designing Java classes",
-        "Adding instance fields",
-        "Adding a constructor method",
-        "Creating getters and setters",
-        "Printing to the terminal",
-        "Using the main method",
-        "Scope (or variable shadowing)"
-    ]
-
-    # Combine task goals into a single string
-    task_goals_text = "\n".join([f"* {goal}" for goal in task_goals])
-
-    # Combine theme and task goals into a single prompt
+    # Combine theme into a single prompt
     prompt = (f"Create a new programming task in {language} with the following theme: {theme}. "
               "The task should follow a similar structure and format to the provided example, including detailed instructions, preparation steps, learning goals, and assignment description with exercises. "
               "Make sure to include the title, subtitle, and emojis for aesthetics. "
-              "The task goals must include:\n"
-              f"{task_goals_text}\n\n"
+              "The task goals must include: Designing Java classes, Adding instance fields, Adding a constructor method, Creating getters and setters, Printing to the terminal, Using the main method, and Scope (or variable shadowing). "
               "The description should be detailed, well-structured, and aesthetically pleasing to provide thorough instructions for the students. "
               "Here is an example structure:\n\n"
               "# Indamon, I choose you!\n\n"
               "For the second exercise of INDA, you are going to practice on modelling objects in Java. You are going to acquaint yourself with the components of a Java class.\n\n"
-
+              "### 💀 Deadline\n"
+              "This work should be completed before the exercise, on **Friday 16th September**.\n\n"
               "### 👩‍🏫 Instructions\n"
               "For instructions on how to do and submit the assignment, please see the "
               "[assignments section of the course instructions](https://gits-15.sys.kth.se/inda-22/course-instructions#assignments).\n\n"
               "### 📝 Preparation\n"
               "You must read and answer the questions in the OLI material for Module 2.\n\n"
               "- Read [Looking Inside Classes](https://kth.oli.cmu.edu/jcourse/webui/syllabus/module.do?context=f5e5a808ac1f088812f2a8ce315bac60)\n"
-              "- If you have not done so, go to https://kth.oli.cmu.edu/, signup and register for the course key `dd1337-ht22`\n\n"
+              "- If you have not done so, goto https://kth.oli.cmu.edu/, signup and register for the course key `dd1337-ht22`\n\n"
               "> **Assistant's Note:** The OLI material and tasks might be slightly out of line this year, so it is ok to read ahead if you did not find all the material.\n\n"
               "### ✅ Learning Goals\n\n"
-              f"{task_goals_text}\n\n"
-
+              "This weeks learning goals include:\n"
+              "* Designing Java classes\n"
+              "* Adding instance fields\n"
+              "* Adding a constructor method\n"
+              "* Creating *getters* and *setters*\n"
+              "* Printing to the terminal\n"
+              "* Using the `main` method\n"
+              "* Scope (or *variable shadowing*)\n\n"
+              "### 🚨 Troubleshooting Guide\n"
+              "If you have any questions or problems, follow this procedure:\n\n"
+              "1. Look at this week's [posted issues](https://gits-15.sys.kth.se/inda-22/help/issues). Are other students asking about your problem?\n"
+              "2. If not, post a question yourself by creating a [New Issue](https://gits-15.sys.kth.se/inda-22/help/issues/new). Add a descriptive title, beginning with \"Task *x*: *summary of problem here*\"\n"
+              "3. Ask a TA in person during the [weekly lab](https://queue.csc.kth.se/Queue/INDA). Check your schedule to see when the next lab is.\n\n"
+              "We encourage you to discuss with your course friends, but **do not share answers**!\n\n"
               "### 🏛 Assignment\n\n"
               "At the Campus of the Royal Institute of Technology in Stockholm, Sweden, there exists a mythical creature called *Indamon*. Your task at hand is to model these mythical creatures in Java! No one is alive to tell the story of how these creatures look, but with the help of [modern technology](https://huggingface.co/spaces/dalle-mini/dalle-mini) we have generated some picture to spur your imagination:\n\n"
               "<img src=\"images/dallemini-indamons.png\" width=\"800\">\n\n"
@@ -120,7 +118,7 @@ def main(api_key):
               "</details>\n\n"
               "> **Assistant's Note:** The getters and setters of a field of `boolean` type follows a different naming convention from the usual `getXXX()` and `setXXX`: `isFainted()` and `setFainted()`.\n\n"
               "#### Exercise 2.2 -- Constructor\n"
-              "Example 2 is a bit tedious; you don’t want to add attributes to each object you create in this way. Instead, you should use a *constructor*. Implement a constructor following the examples in the OLI material (or the [Official Oracle tutorial](https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html)), and repeat example 2 with this implementation.\n\n"
+              "Example 2 is a bit tedious; you dont want to add attributes to each object you create in this way. Instead, you should use a *constructor*. Implement a constructor following the examples in the OLI material (or the [Official Oracle tutorial](https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html)), and repeat example 2 with this implementation.\n\n"
               "#### Exercise 2.3 -- `printInfo()`\n"
               "You want a way to print all the info about the indamon to the terminal. Take a look at Example 3 and implement a method called `printInfo()`. The return type should be `void`.\n\n"
               "<details>\n"
@@ -150,10 +148,10 @@ def main(api_key):
               "  ```\n"
               "</details>\n\n"
               "#### Exercise 2.4 -- Indamon, attack!\n"
-              "Indamons are fierce creatures, and now we want to model a fight between them. In order to abstract this new functionality, you must implement a method called `attack` which will receive an Indamon object that represents the opponent in battle. If indamon *A* is attacking indamon *B*, the damage done is following the formula:\n\n"
+              "Indamons are fierce creatures, and now we want to model a fight between them. In order to abstract this new functionality you must implement a method called `attack` which will receive an Indamon object that represents the opponent in battle. If indamon *A* is attacking indamon *B*, the damage done is following the formula:\n\n"
               "<img src=\"images/indamon-attack.png\" alt=\"Indamon, attack!\" width=\"400\"/>\n\n"
               "It should print the status to the terminal.\n\n"
-              "> **Assistant's Note:** to define the return type of the method, think about what it's expecting to happen and what the instructions say about returning. Use the `getters` and `setters` to change the value of the object.\n\n"
+              "> **Assistant's Note:** to define the return type of the method think about what it's expecting to happen and what the instructions says about returning. Use the `getters` and `setters`to change the value of the object.\n\n"
               "<details>\n"
               "  <summary> 🛠 Example 4 </summary>\n\n"
               "  ```java\n"
@@ -167,13 +165,13 @@ def main(api_key):
               "  ```\n\n"
               "  This call should print a similar message to the terminal:\n\n"
               "  ```\n"
-              "  > Indamon Glassey attacked indamon Siberov for 1.0 damage!\n"
+              "  > Indamon Glassey attacked indamon Siberov för 1.0 damage!\n"
               "  > Indamon Siberov has 9 hp left!\n"
               "  ```\n"
               "</details>\n\n"
               "#### Exercise 2.5 -- Variable Shadowing\n"
-              "Take a look at the *Variable shadowing*-examples below. You might be asked to explain how to fix this example in class, so be prepared.\n"
-              "You can look at the article on Variable Shadowing on [Wikipedia](https://en.wikipedia.org/wiki/Variable_shadowing) and how the Java keyword [this](https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html) works.\n\n"
+              "Take a look at the *Variable shadowing*-examples below. You might be asked to explained on how to fix this example in class, so be prepared.\n"
+              "You can look at the article of Variable Shadowing on [Wikipedia](https://en.wikipedia.org/wiki/Variable_shadowing) and how the Java keyword [this](https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html) works.\n\n"
               "```Java\n"
               "public class Shadow1 {\n"
               "    private int number = 0; // I want this number printed :(\n\n"
@@ -203,6 +201,8 @@ def main(api_key):
               "}\n"
               "```\n\n"
               "> **Assistant's Note:** Think about the *local scope*, *global variables* and *instance fields* of the provided examples.\n\n"
+              "### 🐞 Bugs and errors?\n"
+              "If you find any inconsistences or errors in this exercise, please open a [New Issue](https://gits-15.sys.kth.se/inda-22/help/issues/new) with the title \"Task *x* Error: *summary of error here*\". Found bugs will be rewarded by mentions in the acknowledgment section.\n"
              )
 
     # Call OpenAI API to generate the task description
@@ -231,7 +231,7 @@ def generate_with_retries(client, prompt, max_retries=3):
     for attempt in range(max_retries):
         try:
             response = client.chat.completions.create(
-                model="GPT-4o",
+                model="gpt-4o-2024-08-06",
                 messages=[
                     {"role": "system", "content": "You are a helpful assistant."},
                     {"role": "user", "content": prompt}
