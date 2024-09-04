@@ -1,4 +1,4 @@
-# Task Template
+# Task Templat
 
 ## Theme
 For the second exercise of INDA, you are going to practice on modeling objects in Java. You are going to acquaint yourself with the components of a Java class.
