@@ -1,110 +1,103 @@
 ```java
-public class Player {
-
-    private String name;
-    private int score;
-    private int hp;
-    private int x;
-    private int y;
-    private boolean isAlive;
-
-
-    public Player(String name, int hp, int x, int y){
-        this.name = name;
-        this.hp = hp;
-        this.x  = x;
-        this.y  = y;
-        this.isAlive = true;
-    }
-
-    // getters and setters for player name, score, hp, (x, y) position and isAlive status
-    // ...
-
-    public void moveRight(){
-        x++;
-    }
-
-    public void moveLeft(){
-        x--;
-    }
-
-    public void moveUp(){
-        y++;
-    }
-
-    public void moveDown(){
-        y--;
-    }
-
-    public void defeat(Enemy enemy){
-        if(enemy.getHP() <= 0){
-            this.score += 100;
-        }
-    }
-
-    public void checkStatus(){
-        if(this.hp <= 0){
-            this.isAlive = false;
-        }
-    }
-
-    // This method will demonstrate variable shadowing
-    public int RetrieveScore(int score){
-        return this.score;
-    }
-}
-
-
-public class Enemy {
-
+public class Hero {
     private String name;
     private int hp;
-    private int x;
-    private int y;
-    private int powerLevel;
+    private int attack;
+    private int defense;
+    private boolean magicPotion;
+    private int experience;
 
+    public Hero(String name, int hp, int attack, int defense, boolean magicPotion, int experience){
+         this.name = name;
+         this.hp = hp;
+         this.attack = attack;
+         this.defense = defense;
+         this.magicPotion = magicPotion;
+         this.experience = experience;
+     }
 
-    public Enemy(String name, int hp, int x, int y, int powerLevel){
-        this.name = name;
-        this.hp = hp;
-        this.x  = x;
-        this.y  = y;
-        this.powerLevel = powerLevel;
-    }
+     public String getName() {
+         return this.name;
+     }
 
-    // getters and setters for enemy name, hp, (x, y) position and powerLevel
-    // ...
+     public void setName(String name) {
+         this.name = name;
+     }
 
-    public void moveRight(){
-        x++;
-    }
+     public int getHp() {
+         return this.hp;
+     }
 
-    public void moveLeft(){
-        x--;
-    }
+     public void setHp(int hp) {
+         this.hp = hp;
+     }
 
-    public void moveUp(){
-        y++;
-    }
+     public int getAttack() {
+         return this.attack;
+     }
 
-    public void moveDown(){
-        y--;
-    }
-}
+     public void setAttack(int attack) {
+         this.attack = attack;
+     }
 
+     public int getDefense() {
+         return this.defense;
+     }
 
-public class Main {
-    public static void main(String[] args) {
-        // Create a new instance of Player at (0, 0) with name "Hunter" and 100 HP
-        Player player = new Player("Hunter", 100, 0, 0);
+     public void setDefense(int defense) {
+         this.defense = defense;
+     }
 
-        // Create a new instance of Enemy at (5, 5) with name "Demon", 100 HP and power level 10
-        Enemy enemy = new Enemy("Demon", 100, 5, 5, 10);
+     public int getExperience() {
+         return this.experience;
+     }
 
-        // Assume we simulate a game here
-        // ...
+     public void setExperience(int experience) {
+         this.experience = experience;
+     }
 
-        player.checkStatus();
-    }
+     public boolean isMagicPotion() {
+         return this.magicPotion;
+     }
+
+     public void setMagicPotion(boolean magicPotion) {
+         this.magicPotion = magicPotion;
+     }
+
+     public void printHeroDetails(){ 
+         System.out.println("Name: " + this.name);
+         System.out.println("HP: " + this.hp);
+         System.out.println("Attack: " + this.attack);
+         System.out.println("Defense: " + this.defense);
+         System.out.println("Magic Potion Availability: " + this.magicPotion);
+         System.out.println("Experience: " + this.experience);
+     }
+
+     public void goForAdventure(String path){
+         switch(path) {
+            case "forest":
+                this.experience += 100; 
+                this.magicPotion = true;
+                break;
+            case "city":
+                this.experience += 50;
+                break;
+            case "mountain":
+                this.experience += 200;
+                this.magicPotion = false; 
+                break;
+            case "cave":
+                this.experience += 150; 
+                this.magicPotion = false;
+                break;
+            default:
+                break;
+         }
+     }
+
+     public static void main(String[] args) {
+         Hero hero = new Hero("Luna", 100, 70, 20, false, 0); 
+         hero.printHeroDetails();
+     }
 }
 ```

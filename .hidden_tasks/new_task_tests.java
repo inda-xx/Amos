@@ -1,79 +1,99 @@
 ```java
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
-
-public class PlayerAndEnemyTest {
-    Player player;
-    Enemy enemy;
+public class HeroTest {
+    private Hero hero1;
+    private Hero hero2;
 
     @Before
     public void setUp() {
-        player = new Player("Hunter", 100, 0, 0); // player starts at (0, 0) with 100 HP
-        enemy = new Enemy("Demon", 100, 5, 5, 10); // enemy starts at (5, 5) with 100 HP and 10 power level
+        hero1 = new Hero("Luna", 100, 70, 20, false, 0);
+        hero2 = new Hero("Venus", 120, 80, 30, true, 500);
     }
 
     @Test
-    public void testPlayerIsAliveAtStart() {
-        assertTrue(player.isAlive());
+    public void testGetName() {
+        assertEquals("Luna", hero1.getName());
+        assertEquals("Venus", hero2.getName());
     }
 
     @Test
-    public void testPlayerCanMove() {
-        player.moveRight();
-        assertEquals(1, player.getXPos());
-
-        player.moveUp();
-        assertEquals(1, player.getYPos());
-
-        Player.moveLeft();
-        assertEquals(0, player.getXPos());
-
-        player.moveDown();
-        assertEquals(0, player.getYPos());
+    public void testGetHp() {
+        assertEquals(100, hero1.getHp());
+        assertEquals(120, hero2.getHp());
     }
 
     @Test
-    public void testPlayerCanDefeatEnemy(){
-        enemy.setHP(0); // Set enemy HP to 0
-        player.defeat(enemy); // Player should defeat enemy
-        assertTrue(player.getScore() > 0);    // Player's score should increase
+    public void testGetAttack() {
+        assertEquals(70, hero1.getAttack());
+        assertEquals(80, hero2.getAttack());
     }
 
     @Test
-    public void testPlayerCannotDefeatAliveEnemy() {
-        player.defeat(enemy); // Attempt to defeat enemy with non-0 HP
-        assertEquals(0, player.getScore()); // Player's score should not increase
+    public void testGetDefense() {
+        assertEquals(20, hero1.getDefense());
+        assertEquals(30, hero2.getDefense());
     }
 
     @Test
-    public void testPlayerLosesWhenHpZero() {
-        player.setHP(0); // Causes player's HP to drop to 0
-        player.checkStatus(); // Check if player is still alive
-        assertFalse(player.isAlive()); // Player should be dead
+    public void testGetMagicPotion() {
+        assertEquals(false, hero1.isMagicPotion());
+        assertEquals(true, hero2.isMagicPotion());
     }
 
     @Test
-    public void testEnemyCanMove() {
-        enemy.moveRight();
-        assertEquals(6, enemy.getXPos());
-
-        enemy.moveUp();
-        assertEquals(6, enemy.getYPos());
-
-        enemy.moveLeft();
-        assertEquals(5, enemy.getXPos());
-
-        enemy.moveDown();
-        assertEquals(5, enemy.getYPos());
+    public void testGetExperience() {
+        assertEquals(0, hero1.getExperience());
+        assertEquals(500, hero2.getExperience());
     }
 
     @Test
-    public void testVariableShadowing(){
-        player.setScore(1000); // set player's score to 1000
-        int score = 0; // declare shadow variable with same name
-        assertEquals(1000, player.retrieveScore(score)); // ensure method returns correct score
+    public void testSetName() {
+        hero1.setName("Vega");
+        assertEquals("Vega", hero1.getName());
     }
+
+    @Test
+    public void testSetHp() {
+        hero1.setHp(50);
+        assertEquals(50, hero1.getHp());
+    }
+
+    @Test
+    public void testSetAttack() {
+        hero1.setAttack(60);
+        assertEquals(60, hero1.getAttack());
+    }
+
+    @Test
+    public void testSetDefense() {
+        hero1.setDefense(40);
+        assertEquals(40, hero1.getDefense());
+    }
+
+    @Test
+    public void testSetsMagicPotion() {
+        hero1.setMagicPotion(true);
+        assertEquals(true, hero1.isMagicPotion());
+    }
+
+    @Test
+    public void testSetExperience() {
+        hero1.setExperience(10);
+        assertEquals(10, hero1.getExperience());
+    }
+  
+    @Test
+    public void testGoForAdventure() {
+        hero1.goForAdventure("forest");
+        assertEquals(100, hero1.getExperience()); 
+        assertEquals(true, hero1.isMagicPotion()); 
+
+        hero2.goForAdventure("city");
+        assertEquals(550, hero2.getExperience()); 
+        assertEquals(true, hero2.isMagicPotion());
+    } 
 }
 ```
